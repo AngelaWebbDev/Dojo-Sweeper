@@ -32,7 +32,6 @@ function hideNinjas(){
         //math.random row and col numbers (0-9)
         var hideAtRow = Math.floor(Math.random()*9);
         var hideAtCol = Math.floor(Math.random()*9);
-        console.log("row/col line 46 = " + hideAtRow + " " + hideAtCol);
         //if row/col combo already has a 1 in its spot, choose again
         if(tenNinjas[hideAtRow][hideAtCol]==0){
             tenNinjas[hideAtRow][hideAtCol] = 1;
