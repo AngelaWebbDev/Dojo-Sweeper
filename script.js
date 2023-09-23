@@ -38,35 +38,23 @@ function howMany(rowNum, colNum, element) {
     previousClick = idNum;
     
     var ninjas = 0;
-    //check row that is -- == and ++ than clicked row number
-    for(var row = rowNum-1 ; row<=rowNum+1 ; row++){
-        //if row is a valid row number (>=0 or <=theDojo.length)
-        if(row>=0 && row<=theDojo.length){
-            //check columns that are -- == and ++ current column number
-            for(var col = colNum-1 ; col<=colNum+1 ; col++){
-                //if col is a valid col number (>=0 or <=theDojo[row].length)
-                if(col>=0 && col<=theDojo[row].length){
-                    //if there is a nonzero # in the block, add it to ninjas
-                    if(theDojo[row][col]>0){
-                        ninjas+=theDojo[row][col];
-                    }
+    for(var row = rowNum-1 ; row<=rowNum+1 ; row++){ /* check rows --,++,== */
+        if(row>=0 && row<=theDojo.length){ /* is row a valid row number? */
+            for(var col = colNum-1 ; col<=colNum+1 ; col++){ /* check cols --,++,== */
+                if(col>=0 && col<=theDojo[row].length){ /* is col a valid col number? */
+                    ninjas+=theDojo[row][col]; /* add to ninja count */
                 }
             }
         }
     }
-    //do not include ninjas in clicked square (subtract theDojo[row][col])
-    ninjas-=theDojo[rowNum][colNum];
+    ninjas-=theDojo[rowNum][colNum]; /* do not include ninjas in clicked square */
+
     // BONUS CHALLENGE 1: draw the number onto the button instead of alerting it
     // alert(`There are ${ninjas} hiding around this square.`);
     playboard.innerHTML = ninjas;
-
-
-
-    
 }
     
 // BONUS CHALLENGES
-// 1. draw the number onto the button instead of alerting it
 // 2. at the start randomly place 10 ninjas into theDojo with at most 1 on each spot
 // 3. if you click on a ninja you must restart the game 
 //    dojoDiv.innerHTML = `<button onclick="location.reload()">restart</button>`;
