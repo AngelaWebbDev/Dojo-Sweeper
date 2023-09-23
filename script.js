@@ -22,16 +22,20 @@ function render(theDojo) {
     return result;
 }
     
-// TODO - Make this function tell us how many ninjas are hiding 
-//        under the adjacent (all sides and corners) squares.
-//        Use rowNum and colNum as the indexes to check theDojo.
-//        Ninjas hiding in clicked square are not counted.
+//tell us how many ninjas are hiding under the adjacent (all sides and corners) squares.
+//ninjas hiding in clicked square are not counted
+var previousClick; /* to delete previous cell when new one is clicked */
 function howMany(rowNum, colNum, element) {
-    console.log("line 30: row/col = " + rowNum + "/" + colNum);
+    //clear previous clicked cell
+    if(previousClick!=null){
+        var previousGuess = document.getElementById(previousClick);
+        previousGuess.innerText = " ";    
+    }
+
+    //get info for current clicked cell
     idNum = rowNum.toString()+colNum.toString();
-    var playboard = document.getElementById(idNum);
-    console.log("rowNum+colNum = " + idNum);
-    console.log(typeof idNum);
+    playboard = document.getElementById(idNum);
+    previousClick = idNum;
     
     var ninjas = 0;
     //check row that is -- == and ++ than clicked row number
@@ -54,15 +58,7 @@ function howMany(rowNum, colNum, element) {
     ninjas-=theDojo[rowNum][colNum];
     // BONUS CHALLENGE 1: draw the number onto the button instead of alerting it
     // alert(`There are ${ninjas} hiding around this square.`);
-
-
-
-
-////////////////////////////////////////////////////////////
-//////                     FIX ME                        //
-    playboard.innerHTML = ninjas; 
-// ERROR: Cannot set properties of null (setting 'innerHTML')
-/////////////////////////////////////////////////////////////
+    playboard.innerHTML = ninjas;
 
 
 
