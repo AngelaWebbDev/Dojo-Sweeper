@@ -19,7 +19,38 @@ function render(theDojo) {
             result += `<button class="tatami" id="${rowNum}${colNum}" onclick="howMany(${rowNum}, ${colNum}, this)"></button>`;
         }
     }
+    hideNinjas();
     return result;
+}
+
+// BONUS CHALLENGE 2: at the start randomly place 10 ninjas into theDojo with at most 1 on each spot
+function hideNinjas(){
+    //create a copy of theDojo with all numbers being 0
+    var tenNinjas = [ 
+                    [0, 0 ,0, 0, 0, 0, 0, 0, 0, 0],
+                    [0, 0 ,0, 0, 0, 0, 0, 0, 0, 0],
+                    [0, 0 ,0, 0, 0, 0, 0, 0, 0, 0],
+                    [0, 0 ,0, 0, 0, 0, 0, 0, 0, 0],
+                    [0, 0 ,0, 0, 0, 0, 0, 0, 0, 0],
+                    [0, 0 ,0, 0, 0, 0, 0, 0, 0, 0],
+                    [0, 0 ,0, 0, 0, 0, 0, 0, 0, 0],
+                    [0, 0 ,0, 0, 0, 0, 0, 0, 0, 0],
+                    [0, 0 ,0, 0, 0, 0, 0, 0, 0, 0],
+                    [0, 0 ,0, 0, 0, 0, 0, 0, 0, 0] 
+                    ];
+    //for count of 10 (to hide 10 ninjas)
+    for(var i=0;i<10;i++){
+        //math.random row and col numbers (0-9)
+        var hideAtRow = Math.floor(Math.random()*9);
+        var hideAtCol = Math.floor(Math.random()*9);
+        console.log("row/col line 46 = " + hideAtRow + " " + hideAtCol);
+        //if row/col combo already has a 1 in its spot, choose again
+        if(tenNinjas[hideAtRow][hideAtCol]==0){
+            tenNinjas[hideAtRow][hideAtCol] = 1;
+        }else{
+            i--;
+        }        
+    }
 }
     
 //tell us how many ninjas are hiding under the adjacent (all sides and corners) squares.
@@ -63,8 +94,7 @@ dojoDiv.innerHTML = render(theDojo);
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //                                               BONUS CHALLENGES                                           //
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-// 2. at the start randomly place 10 ninjas into theDojo with at most 1 on each spot
+ 
 // 3. if you click on a ninja you must restart the game 
 //    dojoDiv.innerHTML = `<button onclick="location.reload()">restart</button>`;
    
