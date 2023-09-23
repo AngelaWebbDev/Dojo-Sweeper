@@ -43,18 +43,24 @@ function hideNinjas(){
     
 //tell us how many ninjas are hiding under the adjacent (all sides and corners) squares.
 //ninjas hiding in clicked square are not counted
-var previousClick;
+// var previousClick;
 function howMany(rowNum, colNum, element) {
     //clear previous clicked cell
-    if(previousClick!=null){
-        var previousGuess = document.getElementById(previousClick);
-        previousGuess.innerText = " ";    
-    }
+    // if(previousClick!=null){
+    //     var previousGuess = document.getElementById(previousClick);
+    //     previousGuess.innerText = " ";    
+    // }
     //get info for current clicked cell
     idNum = rowNum.toString()+colNum.toString();
     playboard = document.getElementById(idNum);
-    previousClick = idNum;
+    // previousClick = idNum;
     
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    //                                                                          FIX ME            //
+    //                       CLICKS HAVE NO EFFECT ON ROW 9                                       //
+    /////////////////////////////////////////////////////////////////////////////////////////////////
+
     var ninjas = 0;
     for(var row = rowNum-1 ; row<=rowNum+1 ; row++){ /* check rows --,++,== */
         if(row>=0 && row<=tenNinjas.length){ /* is row a valid row number? */
@@ -66,6 +72,10 @@ function howMany(rowNum, colNum, element) {
         }
     }
     ninjas-=tenNinjas[rowNum][colNum]; /* do not include ninjas in clicked square */
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
     // BONUS CHALLENGE 1: draw the number onto the button instead of alerting it
     playboard.innerHTML = ninjas;
