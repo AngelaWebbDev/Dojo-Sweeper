@@ -24,14 +24,13 @@ function render(theDojo) {
     
 //tell us how many ninjas are hiding under the adjacent (all sides and corners) squares.
 //ninjas hiding in clicked square are not counted
-var previousClick; /* to delete previous cell when new one is clicked */
+var previousClick;
 function howMany(rowNum, colNum, element) {
     //clear previous clicked cell
     if(previousClick!=null){
         var previousGuess = document.getElementById(previousClick);
         previousGuess.innerText = " ";    
     }
-
     //get info for current clicked cell
     idNum = rowNum.toString()+colNum.toString();
     playboard = document.getElementById(idNum);
@@ -50,23 +49,22 @@ function howMany(rowNum, colNum, element) {
     ninjas-=theDojo[rowNum][colNum]; /* do not include ninjas in clicked square */
 
     // BONUS CHALLENGE 1: draw the number onto the button instead of alerting it
-    // alert(`There are ${ninjas} hiding around this square.`);
     playboard.innerHTML = ninjas;
 }
     
-// BONUS CHALLENGES
-// 2. at the start randomly place 10 ninjas into theDojo with at most 1 on each spot
-// 3. if you click on a ninja you must restart the game 
-//    dojoDiv.innerHTML = `<button onclick="location.reload()">restart</button>`;
-    
+ 
 // start the game
 // message to greet a user of the game
 var style="color:cyan;font-size:1.5rem;font-weight:bold;";
-console.log("%c" + "IF YOU ARE A DOJO STUDENT...", style);
-console.log("%c" + "GOOD LUCK THIS IS A CHALLENGE!", style);
-
-// shows the dojo for debugging purposes
-console.table(theDojo);
 
 // adds the rows of buttons into <div id="the-dojo"></div> 
 dojoDiv.innerHTML = render(theDojo);    
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                               BONUS CHALLENGES                                           //
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// 2. at the start randomly place 10 ninjas into theDojo with at most 1 on each spot
+// 3. if you click on a ninja you must restart the game 
+//    dojoDiv.innerHTML = `<button onclick="location.reload()">restart</button>`;
+   
