@@ -35,8 +35,8 @@ function render(tenNinjas) {
             result += `<button class="tatami" id="${rowNum}${colNum}" onclick="howMany(${rowNum}, ${colNum}, this)"></button>`;
         }
     }
-    setTimeout(hideNinjas,500); /* TESTING PURPOSES ONLY to see where Ninjas are hidden ************************************************/
-    // hideNinjas();
+    // setTimeout(hideNinjas,500); /* TESTING PURPOSES ONLY to see where Ninjas are hidden ************************************************/
+    hideNinjas();
     return result;
 }
 
@@ -144,13 +144,14 @@ function hideGameArea(){
 //when player has clicked 90 squares, they win
 function youWin(){
     restartGame.innerHTML = `<p>You Won!<br>
-                                You avoided all the snakes!<br>
+                                You found all the snakes!<br>
                                 <br>
                                 Do you want to play again?
                             </p>
                             <button onclick="location.reload()">Yes</button>
                             <button onclick="hideGameArea()">No</button>`;
     //all squares with ninjas change to background-color:black
+    restartGame.style.display="block";
     for(var i=0;i<tenNinjas.length;i++){
         for(var j=0;j<tenNinjas[i].length;j++){
             squareNum = i.toString() + j.toString();
