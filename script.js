@@ -11,6 +11,7 @@ var tenNinjas = [
     [0, 0 ,0, 0, 0, 0, 0, 0, 0, 0] 
     ];
 var dojoDiv = document.querySelector("#the-dojo");
+var restartGame = document.querySelector("#restartArea");
     
 // Creates the rows of buttons for this game
 function render(tenNinjas) {
@@ -44,9 +45,35 @@ function hideNinjas(){
         }        
     }
 }
+
+function hideGameArea(){
+    dojoDiv.style.visibility = "hidden";
+    restartGame.innerHTML = `Game Over`;
+}
     
 //tell how many ninjas are under adjacent (all sides and corners) squares, ninjas hiding in clicked square are not counted
 function howMany(rowNum, colNum, element) {
+    //BONUS CHALLENGE: if you click on a ninja you must restart the game 
+    if(tenNinjas[rowNum][colNum]==1){
+        //button to restart game is added
+        restartGame.innerHTML = `<p>Oops!</p>
+                                <p>Restart Game?</p>
+                                <button onclick="location.reload()">Yes</button>
+                                <button onclick="hideGameArea()">No</button>`;
+        //all squares with ninjas change to background-color:red
+        //all squares without ninjas change to background-color:lightgray
+        for(var i=0;i<tenNinjas.length;i++){
+            for(var j=0;j<tenNinjas[i].length;j++){
+                squareNum = i.toString() + j.toString();
+                if(tenNinjas[i][j]==0){
+                    document.getElementById(squareNum).style.backgroundColor = "lightgray";
+                }else{
+                    document.getElementById(squareNum).style.backgroundColor = "red";
+                    document.getElementById(squareNum).innerText = "X";
+                }
+            }
+        }
+    }else{
     var ninjas = 0;
     for(var row = rowNum-1 ; row<=rowNum+1 ; row++){ /* check rows --,++,== */
         if(row>=0 && row<=tenNinjas.length-1){ /* is row a valid row number? */
@@ -59,9 +86,11 @@ function howMany(rowNum, colNum, element) {
     }
     ninjas-=tenNinjas[rowNum][colNum]; /* do not include ninjas in clicked square */
 
-
     // BONUS CHALLENGE 1: draw the number onto the button instead of alerting it
-    element.innerHTML = ninjas;
+    element.innerHTML = ninjas;    
+    }
+
+
 }
     
  
@@ -72,10 +101,4 @@ var style="color:cyan;font-size:1.5rem;font-weight:bold;";
 // adds the rows of buttons into <div id="the-dojo"></div> 
 dojoDiv.innerHTML = render(tenNinjas);    
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//                                               BONUS CHALLENGES                                           //
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
- 
-// 3. if you click on a ninja you must restart the game 
-//    dojoDiv.innerHTML = `<button onclick="location.reload()">restart</button>`;
    
