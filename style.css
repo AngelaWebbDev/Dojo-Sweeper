@@ -19,9 +19,6 @@ h2 {
 #guessButtons{
     margin-bottom: 10px;
 }
-#markLocation, #unmarkLocation{
-    visibility: hidden;
-}
 #the-dojo {
     width: 320px;
     margin: 0 auto;
