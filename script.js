@@ -18,15 +18,16 @@ var playCounter = 0;
     
 // Creates the rows of buttons for this game
 function render(tenNinjas) {
-    instructionsArea.innerHTML = `<p>Ten ninjas are hiding in the grass.<br>
+    instructionsArea.innerHTML = `<p>Ten snakes are sleeping in the grass.<br>
+                                    How far can you walk without stepping on one?
                                     <br>
-                                    Choose a square to see how many ninjas are hiding in the surrounding squares.<br>
-                                    If you click on a ninja, you lose.<br>
+                                    Choose a square to see how many snakes are in the surrounding squares.<br>
+                                    If you step on a snake, you lose.<br>
                                     <br>
-                                    When you think you know where a ninja is hiding<br>
-                                    click the "Mark Location" button,<br>
-                                    then click the square where you think the ninja is.<br>
-                                    If you change your mind, use the "Unmark Location" button the same way.</p><br>`;
+                                    When you think you know where a snake is at<br>
+                                    click the "Mark a Spot" button,<br>
+                                    then click the square where you think the snake is.<br>
+                                    If you change your mind, use the "Unmark a Spot" button the same way.</p><br>`;
     var result = "";
     for(var rowNum=0; rowNum<tenNinjas.length; rowNum++) {
         for(var colNum=0; colNum<tenNinjas[rowNum].length; colNum++) {
@@ -50,9 +51,9 @@ function hideNinjas(){
         //if row/col combo already has a 1 in its spot, choose again
         if(tenNinjas[hideAtRow][hideAtCol]==0){
             tenNinjas[hideAtRow][hideAtCol] = 1;
-            var placedNinja = hideAtRow.toString() + hideAtCol.toString(); /* TESTING PURPOSES ONLY to mark squares where ninjas are placed ****************/
-            console.log("square = " + document.getElementById(placedNinja)); /* TESTING PURPOSES ONLY to mark squares where ninjas are placed ****************/
-            document.getElementById(placedNinja).innerHTML = "N"; /* TESTING PURPOSES ONLY to mark squares where ninjas are placed ****************/
+            // var placedNinja = hideAtRow.toString() + hideAtCol.toString(); /* TESTING PURPOSES ONLY to mark squares where ninjas are placed ****************/
+            // console.log("square = " + document.getElementById(placedNinja)); /* TESTING PURPOSES ONLY to mark squares where ninjas are placed ****************/
+            // document.getElementById(placedNinja).innerHTML = "N"; /* TESTING PURPOSES ONLY to mark squares where ninjas are placed ****************/
         }else{
             i--;
         }        

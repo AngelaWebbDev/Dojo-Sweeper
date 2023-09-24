@@ -5,22 +5,34 @@
     padding: 0;
     /* font-family: 'Press Start 2P', monospace; */
 }
+body{
+    margin:10px 10px;
+    border:2px solid black;
+    background-color: gray;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
     
 h2 {
     text-align: center;
-    margin: 20px 0;
+    background-color: black;
+    color:whitesmoke;
+    margin:10px 10px;
+    padding:10px;
 }
 
 #instructions{
     font-size: 1rem;
     color:green;
+    color:rgb(174, 171, 171);
+    padding:20px;
+    text-wrap:balance;
 }
     
 #guessButtons{
     margin-bottom: 10px;
 }
 #the-dojo {
-    width: 320px;
+    width: 300px;
     margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
@@ -28,8 +40,8 @@ h2 {
     
 .tatami {
     background-color: rgb(104, 199, 104);
-    height: 32px;
-    width: 32px;
+    height: 30px;
+    width: 30px;
     border: 2px solid #ccc;
     border-right: 2px solid #999;
     border-bottom: 2px solid #999;
