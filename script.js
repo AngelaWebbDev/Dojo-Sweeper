@@ -69,7 +69,7 @@ function howMany(rowNum, colNum, element) {
         guessing = "";
     }else if(guessing=="unmark"){
         squareID = rowNum.toString()+colNum.toString();
-        document.getElementById(squareID).style.backgroundColor = "background-color: rgb(82, 181, 82)";
+        document.getElementById(squareID).style.backgroundColor = "rgb(82, 181, 82)";
         document.getElementById(squareID).innerText = "";
         guessing = "";
     }else{
