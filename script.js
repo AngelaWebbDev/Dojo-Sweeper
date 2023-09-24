@@ -77,11 +77,11 @@ function howMany(rowNum, colNum, element) {
         if(tenNinjas[rowNum][colNum]==1){
             //button to restart game is added
             restartGame.innerHTML = `<p>Uh oh! You stepped on a snake!</p>
-                                    <p>You survived for ${playCounter} steps!</p>
                                     <p>Try again?</p>
                                     <button class="restartBtn" onclick="location.reload()">Yes</button>
                                     <button class="restartBtn" onclick="hideGameArea()">No</button>`;
             restartGame.style.display = "block";
+            restartGame.style.backgroundColor = "red";
             //all squares with ninjas change to background-color:red
             //all squares without ninjas change to background-color:lightgray
             for(var i=0;i<tenNinjas.length;i++){
@@ -138,6 +138,7 @@ function markSquare(element){
 function hideGameArea(){
     dojoDiv.style.visibility = "hidden";
     restartGame.innerHTML = `<p id="gameOver">Game Over</p>`;
+    restartGame.style.backgroundColor = "inherit";
 }
 
 //when player has clicked 90 squares, they win
