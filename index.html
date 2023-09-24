@@ -3,11 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dojo Sweeper</title>
+    <title>ATN</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h2>Dojo Sweeper<h2>
+    <h2>Avoid the Ninjas<h2>
+    <div id="instructions"></div>
+    <div id="guessButtons">
+        <button id="markLocation" onclick="markSquare(this)">Mark a Location</button>
+        <button id="unmarkLocation" onclick="markSquare(this)">Unmark a Location</button>
+    </div>
     <div id="restartArea"></div>
     <div id="the-dojo">still loading... there may be an error</div>
     <script src="script.js"></script>
