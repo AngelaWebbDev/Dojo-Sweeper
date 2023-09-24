@@ -35,6 +35,7 @@ function hideNinjas(){
         //if row/col combo already has a 1 in its spot, choose again
         if(tenNinjas[hideAtRow][hideAtCol]==0){
             tenNinjas[hideAtRow][hideAtCol] = 1;
+            console.log("ninja placed at " + hideAtRow + " " + hideAtCol);
         }else{
             i--;
         }        
@@ -44,7 +45,7 @@ function hideNinjas(){
 //tell us how many ninjas are hiding under the adjacent (all sides and corners) squares.
 //ninjas hiding in clicked square are not counted
 // var previousClick;
-function howMany(rowNum, colNum, element) {
+function howMany(rowNum, colNum, element) { //element = the block that was clicked
     //clear previous clicked cell
     // if(previousClick!=null){
     //     var previousGuess = document.getElementById(previousClick);
@@ -62,7 +63,8 @@ function howMany(rowNum, colNum, element) {
     /////////////////////////////////////////////////////////////////////////////////////////////////
 
     var ninjas = 0;
-    for(var row = rowNum-1 ; row<=rowNum+1 ; row++){ /* check rows --,++,== */
+    for(var row = rowNum ; row<=rowNum ; row++){ /* check rows --,++,== */
+        console.log("line 66 rowNum = " + rowNum + "  colNum = " + colNum);
         if(row>=0 && row<=tenNinjas.length){ /* is row a valid row number? */
             for(var col = colNum-1 ; col<=colNum+1 ; col++){ /* check cols --,++,== */
                 if(col>=0 && col<=tenNinjas[row].length){ /* is col a valid col number? */
