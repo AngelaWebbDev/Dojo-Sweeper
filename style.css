@@ -22,20 +22,84 @@ h2 {
 
 #instructions{
     font-size: 1rem;
-    color:green;
-    color:rgb(174, 171, 171);
-    padding:20px;
+    padding:20px 20px 0 20px;
+    margin:10px;
     text-wrap:balance;
+    background-color:   rgb(58, 58, 59);
+    text-align: center;
+    color:whitesmoke;
 }
-    
+
+main{
+    border:ridge darkgray 5px;
+    margin:10px;
+    background-color: rgb(70, 70, 70);
+}
 #guessButtons{
-    margin-bottom: 10px;
+    margin-top:5px;
+    display:flex;
+    justify-content: center;
+}
+#markLocation{
+    background-color: yellow;
+    padding:3px;
+    margin:5px;
+    border-radius: 3px;
+}
+#markLocation:hover{
+    box-shadow: 2px 2px black;
+}
+#markLocation:active {
+    border: 2px solid #999;
+    border-right: 2px solid #ccc;
+    border-bottom: 2px solid #ccc;
+}
+#unmarkLocation{
+    padding:3px;
+    margin:5px;
+    border-radius: 3px;
+}
+#unmarkLocation:hover{
+    box-shadow: 2px 2px black;
+}
+#unmarkLocation:active {
+    border: 2px solid #999;
+    border-right: 2px solid #ccc;
+    border-bottom: 2px solid #ccc;
+}
+#restartArea{
+    font-size: 1rem;
+    padding:10px;
+    margin:10px;
+    text-wrap:balance;
+    text-align: center;
+    color:black;
+    display:none;
+}
+#restartArea p{
+    margin-bottom:7px;
+}
+.restartBtn{
+    padding:2px;
+}
+.restartBtn:hover{
+    background-color: black;
+    color:white;
+}
+.restartBtn:active{
+    border: 2px solid #999;
+    border-right: 2px solid #ccc;
+    border-bottom: 2px solid #ccc;
+}
+#gameOver{
+    font-size:5rem;
 }
 #the-dojo {
     width: 300px;
-    margin: 0 auto;
+    margin: 0 auto 10px auto;
     display: flex;
     flex-wrap: wrap;
+    padding-bottom: 10px;
 }
     
 .tatami {
@@ -46,7 +110,6 @@ h2 {
     border-right: 2px solid #999;
     border-bottom: 2px solid #999;
 }
-    
 .tatami:active {
     border: 2px solid #999;
     border-right: 2px solid #ccc;

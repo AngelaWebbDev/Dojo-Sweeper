@@ -24,9 +24,9 @@ function render(tenNinjas) {
                                     Choose a square to see how many snakes are in the surrounding squares.<br>
                                     If you step on a snake, you lose.<br>
                                     <br>
-                                    When you think you know where a snake is at<br>
-                                    click the "Mark a Spot" button,<br>
-                                    then click the square where you think the snake is.<br>
+                                    When you think you found a snake,<br>
+                                    Remember where by clicking "Mark a Spot",<br>
+                                    then click the square you suspect.<br>
                                     If you change your mind, use the "Unmark a Spot" button the same way.</p><br>`;
     var result = "";
     for(var rowNum=0; rowNum<tenNinjas.length; rowNum++) {
@@ -76,11 +76,12 @@ function howMany(rowNum, colNum, element) {
         //BONUS CHALLENGE: if you click on a ninja you must restart the game 
         if(tenNinjas[rowNum][colNum]==1){
             //button to restart game is added
-            restartGame.innerHTML = `<p>You stepped on a snake!</p>
-                                    <p>You walked ${playCounter} steps before that.</p>
+            restartGame.innerHTML = `<p>Uh oh! You stepped on a snake!</p>
+                                    <p>You survived for ${playCounter} steps!</p>
                                     <p>Try again?</p>
-                                    <button onclick="location.reload()">Yes</button>
-                                    <button onclick="hideGameArea()">No</button>`;
+                                    <button class="restartBtn" onclick="location.reload()">Yes</button>
+                                    <button class="restartBtn" onclick="hideGameArea()">No</button>`;
+            restartGame.style.display = "block";
             //all squares with ninjas change to background-color:red
             //all squares without ninjas change to background-color:lightgray
             for(var i=0;i<tenNinjas.length;i++){
@@ -136,7 +137,7 @@ function markSquare(element){
 //hide game area if user does not want to restart game
 function hideGameArea(){
     dojoDiv.style.visibility = "hidden";
-    restartGame.innerHTML = `Game Over`;
+    restartGame.innerHTML = `<p id="gameOver">Game Over</p>`;
 }
 
 //when player has clicked 90 squares, they win
