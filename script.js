@@ -19,7 +19,7 @@ var playCounter = 0;
 // Creates the rows of buttons for this game
 function render(tenNinjas) {
     instructionsArea.innerHTML = `<p>Ten snakes are sleeping in the grass.<br>
-                                    How far can you walk without stepping on one?
+                                    How far can you walk without stepping on one?<br>
                                     <br>
                                     Choose a square to see how many snakes are in the surrounding squares.<br>
                                     If you step on a snake, you lose.<br>
@@ -65,7 +65,7 @@ function howMany(rowNum, colNum, element) {
     if(guessing=="mark"){
         squareID = rowNum.toString()+colNum.toString();
         document.getElementById(squareID).style.backgroundColor = "yellow";
-        document.getElementById(squareID).innerText = "?";
+        document.getElementById(squareID).innerText = "S";
         guessing = "";
     }else if(guessing=="unmark"){
         squareID = rowNum.toString()+colNum.toString();
@@ -76,8 +76,9 @@ function howMany(rowNum, colNum, element) {
         //BONUS CHALLENGE: if you click on a ninja you must restart the game 
         if(tenNinjas[rowNum][colNum]==1){
             //button to restart game is added
-            restartGame.innerHTML = `<p>Oops!</p>
-                                    <p>Restart Game?</p>
+            restartGame.innerHTML = `<p>You stepped on a snake!</p>
+                                    <p>You walked ${playCounter} steps before that.</p>
+                                    <p>Try again?</p>
                                     <button onclick="location.reload()">Yes</button>
                                     <button onclick="hideGameArea()">No</button>`;
             //all squares with ninjas change to background-color:red
@@ -141,7 +142,7 @@ function hideGameArea(){
 //when player has clicked 90 squares, they win
 function youWin(){
     restartGame.innerHTML = `<p>You Won!<br>
-                                You found all the ninjas!<br>
+                                You avoided all the snakes!<br>
                                 <br>
                                 Do you want to play again?
                             </p>
