@@ -39,14 +39,6 @@ function render(tenNinjas) {
     return result;
 }
 
-function markSquare(element){
-    var squareID;  /* to identify squares to mark/unmark guesses */
-    if(element.id=="markLocation"){
-        guessing = "mark";
-    }else{
-        guessing = "unmark";
-    }
-}
 // BONUS CHALLENGE 2: at the start randomly place 10 ninjas into theDojo with at most 1 on each spot
 function hideNinjas(){
     //for count of 10 (to hide 10 ninjas)
@@ -67,12 +59,6 @@ function hideNinjas(){
     }
 }
 
-//hide game area if user does not want to restart game
-function hideGameArea(){
-    dojoDiv.style.visibility = "hidden";
-    restartGame.innerHTML = `Game Over`;
-}
-    
 //tell how many ninjas are under adjacent (all sides and corners) squares, ninjas hiding in clicked square are not counted
 function howMany(rowNum, colNum, element) {
     if(guessing=="mark"){
@@ -111,6 +97,9 @@ function howMany(rowNum, colNum, element) {
                     }
                 }
             }
+            document.getElementById("markLocation").remove();
+            document.getElementById("unmarkLocation").remove();
+            instructionsArea.remove();
         }else{
             var ninjas = 0;
             for(var row = rowNum-1 ; row<=rowNum+1 ; row++){ /* check rows --,++,== */
@@ -129,7 +118,21 @@ function howMany(rowNum, colNum, element) {
     }
 }
 
+function markSquare(element){
+    var squareID;  /* to identify squares to mark/unmark guesses */
+    if(element.id=="markLocation"){
+        guessing = "mark";
+    }else{
+        guessing = "unmark";
+    }
+}
 
+//hide game area if user does not want to restart game
+function hideGameArea(){
+    dojoDiv.style.visibility = "hidden";
+    restartGame.innerHTML = `Game Over`;
+}
+    
 // start the game
 // message to greet a user of the game
 var style="color:cyan;font-size:1.5rem;font-weight:bold;";
